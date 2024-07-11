@@ -10,6 +10,10 @@ import ru.mironov.weblogger.util.WebLogUtil;
 
 import java.io.IOException;
 
+/**
+ * Пользовательский перехватчик исходящих http запросов
+ * Подсчитывает время выполнения запроса и логирует основную информацию о запросе.
+ */
 public class OutgoingLoggingInterceptor implements ClientHttpRequestInterceptor {
 
     private final Logger logger = LoggerFactory.getLogger(IncomingLoggingInterceptor.class);

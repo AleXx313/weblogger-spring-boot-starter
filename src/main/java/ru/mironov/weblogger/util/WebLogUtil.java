@@ -13,6 +13,9 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Утилитарный класс для формирования текста логирования http запросов.
+ */
 public class WebLogUtil {
 
     public static final String TIME_ATTRIBUTE = "timeAttribute";
@@ -26,19 +29,6 @@ public class WebLogUtil {
         return sb.toString();
     }
 
-    public static void buildIncomingRequestLog(HttpServletRequest request, StringBuilder sb) {
-        sb.append("\n=============Incoming Request Logging Start============");
-        sb.append("\nRequest Url          : ").append(request.getRequestURL());
-        sb.append("\nRequest Method       : ").append(request.getMethod());
-        sb.append("\nRequest IP           : ").append(request.getRemoteAddr());
-        sb.append("\nRequest Headers      : ").append(getHeader(request));
-    }
-
-    public static void buildIncomingResponseLog(HttpServletResponse response, StringBuilder sb) {
-        sb.append("\nResponse Status      : ").append(response.getStatus());
-        sb.append("\nResponse Headers     : ").append(getHeader(response));
-    }
-
     public static String buildOutgoingLog(HttpRequest request, ClientHttpResponse response, long time) {
         StringBuilder sb = new StringBuilder();
         buildOutgoingRequestLog(request, sb);
@@ -48,14 +38,27 @@ public class WebLogUtil {
         return sb.toString();
     }
 
-    public static void buildOutgoingRequestLog(HttpRequest request, StringBuilder sb) {
+    private static void buildIncomingRequestLog(HttpServletRequest request, StringBuilder sb) {
+        sb.append("\n=============Incoming Request Logging Start============");
+        sb.append("\nRequest Url          : ").append(request.getRequestURL());
+        sb.append("\nRequest Method       : ").append(request.getMethod());
+        sb.append("\nRequest IP           : ").append(request.getRemoteAddr());
+        sb.append("\nRequest Headers      : ").append(getHeader(request));
+    }
+
+    private static void buildIncomingResponseLog(HttpServletResponse response, StringBuilder sb) {
+        sb.append("\nResponse Status      : ").append(response.getStatus());
+        sb.append("\nResponse Headers     : ").append(getHeader(response));
+    }
+
+    private static void buildOutgoingRequestLog(HttpRequest request, StringBuilder sb) {
         sb.append("\n=============Outgoing Request Logging Start============");
         sb.append("\nRequest Url          : ").append(request.getURI());
         sb.append("\nRequest Method       : ").append(request.getMethod());
         sb.append("\nRequest Headers      : ").append(getHeader(request));
     }
 
-    public static String buildOutgoingResponseLog(ClientHttpResponse response, StringBuilder sb) {
+    private static void buildOutgoingResponseLog(ClientHttpResponse response, StringBuilder sb) {
         String responseCode = "";
         try {
             responseCode = response.getStatusCode().toString();
@@ -63,10 +66,9 @@ public class WebLogUtil {
         }
         sb.append("\nRequest Url          : ").append(responseCode);
         sb.append("\nRequest Headers      : ").append(getHeader(response));
-        return sb.toString();
     }
 
-    public static String getHeader(HttpMessage request) {
+    private static String getHeader(HttpMessage request) {
         StringBuilder sb = new StringBuilder();
         HttpHeaders headers = request.getHeaders();
         for (Map.Entry<String, List<String>> header : headers.entrySet()) {
