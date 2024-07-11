@@ -1,0 +1,8 @@
+org.springframework.context.ApplicationContextInitializer=\
+  ru.mironov.weblogger.init.WebLoggerApplicationContextInitializer
+
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  ru.mironov.weblogger.init.WebLoggerEnvironmentPostProcessor
+
+org.springframework.boot.diagnostics.FailureAnalyzer=\
+  ru.mironov.weblogger.analyzer.WebLoggerFailureAnalyzer

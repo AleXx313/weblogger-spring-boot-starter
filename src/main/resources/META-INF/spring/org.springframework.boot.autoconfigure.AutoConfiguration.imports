@@ -1,0 +1,3 @@
+ru.mironov.weblogger.config.WebLoggerAutoConfiguration
+ru.mironov.weblogger.config.InterceptorConfiguration
+ru.mironov.weblogger.config.RestClientInterceptorConfiguration

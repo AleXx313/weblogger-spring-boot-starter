@@ -1,0 +1,5 @@
+web:
+  logger:
+    enabled: true
+    outgoing-enabled: true
+    incoming-enabled: true
