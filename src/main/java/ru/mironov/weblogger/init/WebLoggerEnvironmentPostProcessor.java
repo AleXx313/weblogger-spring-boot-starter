@@ -23,7 +23,7 @@ public class WebLoggerEnvironmentPostProcessor implements EnvironmentPostProcess
         if (enablePropertyValue != null) {
             boolean isBoolValue = Boolean.TRUE.toString().equals(enablePropertyValue) ||
                     Boolean.FALSE.toString().equals(enablePropertyValue);
-            if (!isBoolValue){
+            if (!isBoolValue) {
                 throw new WebLoggerStartupException("Ошибка при проверке свойства 'web.logger.enabled'!");
             }
         }

@@ -15,13 +15,13 @@ public class WebLoggerAutoConfiguration {
 
     @Bean
     @ConditionalOnProperty(prefix = "web.logger", value = "incoming-enabled", havingValue = "true", matchIfMissing = true)
-    public IncomingLoggingInterceptor incomingLoggingInterceptor(){
+    public IncomingLoggingInterceptor incomingLoggingInterceptor() {
         return new IncomingLoggingInterceptor();
     }
 
     @Bean
     @ConditionalOnProperty(prefix = "web.logger", value = "outgoing-enabled", havingValue = "true", matchIfMissing = true)
-    public OutgoingLoggingInterceptor outgoingLoggingInterceptor(){
+    public OutgoingLoggingInterceptor outgoingLoggingInterceptor() {
         return new OutgoingLoggingInterceptor();
     }
 }

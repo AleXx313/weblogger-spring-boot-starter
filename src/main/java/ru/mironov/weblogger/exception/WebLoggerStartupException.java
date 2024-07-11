@@ -1,6 +1,6 @@
 package ru.mironov.weblogger.exception;
 
-public class WebLoggerStartupException extends RuntimeException{
+public class WebLoggerStartupException extends RuntimeException {
 
     public WebLoggerStartupException() {
     }

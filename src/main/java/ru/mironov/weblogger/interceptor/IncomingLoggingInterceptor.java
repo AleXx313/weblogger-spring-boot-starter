@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 import ru.mironov.weblogger.util.WebLogUtil;
 
 public class IncomingLoggingInterceptor implements HandlerInterceptor {
@@ -22,7 +21,7 @@ public class IncomingLoggingInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
-        long time = System.currentTimeMillis() - ((long)request.getAttribute(WebLogUtil.TIME_ATTRIBUTE));
+        long time = System.currentTimeMillis() - ((long) request.getAttribute(WebLogUtil.TIME_ATTRIBUTE));
         logger.info(WebLogUtil.buildIncomingLog(request, response, time));
     }
 }

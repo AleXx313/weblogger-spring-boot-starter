@@ -25,7 +25,7 @@ class WebLoggerAutoConfigurationTest {
     }
 
     @Test
-    public void init_whenWebLoggerEnabled_thenAllStarterBeansInitialized1() {
+    public void init_whenWebLoggerOutgoingDisabled_thenOutgoingLoggingBeansNotInitialized() {
         runner.withPropertyValues(
                         "web.logger.enabled=true", "web.logger.outgoing-enabled: false")
                 .withUserConfiguration(WebLoggerAutoConfiguration.class)
@@ -36,7 +36,7 @@ class WebLoggerAutoConfigurationTest {
     }
 
     @Test
-    public void init_whenWebLoggerEnabled_thenAllStarterBeansInitialized2() {
+    public void init_whenWebLoggerIncomingDisabled_thenIncomingLoggingBeansNotInitialized() {
         runner.withPropertyValues(
                         "web.logger.enabled=true", "web.logger.incoming-enabled: false")
                 .withUserConfiguration(WebLoggerAutoConfiguration.class)
@@ -47,7 +47,7 @@ class WebLoggerAutoConfigurationTest {
     }
 
     @Test
-    public void init_whenWebLoggerEnabled_thenAllStarterBeansInitialized3() {
+    public void init_whenWebLoggerDisabled_thenAllStarterBeansNotInitialized() {
         runner.withPropertyValues()
                 .withUserConfiguration(WebLoggerAutoConfiguration.class)
                 .run(applicationContext -> {

@@ -32,7 +32,7 @@ public class RestClientInterceptorConfiguration {
     }
 
     @Bean
-    public RestClient restClient(){
+    public RestClient restClient() {
         return RestClient.create(restTemplate());
     }
 }
